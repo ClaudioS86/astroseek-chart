@@ -8,7 +8,7 @@ def generate_astroseek_chart(date, time_str, lat, lon, location, output_file):
     hour, minute = time_str.split(":")
 
     with sync_playwright() as p:
-        browser = p.chromium.launch()
+        browser = p.chromium.launch(headless=False, args=["--no-sandbox"])
         page = browser.new_page()
 
         page.goto("https://horoscopes.astro-seek.com/astro-chart-horoscope-online/")
