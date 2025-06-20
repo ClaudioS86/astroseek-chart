@@ -14,6 +14,7 @@ def generate_astroseek_chart(date, time_str, lat, lon, location, output_file):
         page.goto("https://horoscopes.astro-seek.com/astro-chart-horoscope-online/")
 
         # Compila nome fittizio
+        page.wait_for_selector("#nick", timeout=10000)
         page.fill("#nick", "Test User")
 
         # Inserisci data e ora
