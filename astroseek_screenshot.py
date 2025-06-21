@@ -12,9 +12,9 @@ def generate_astroseek_chart(date, time_str, lat, lon, location, output_file):
         page = context.new_page()
 
         page.goto("https://horoscopes.astro-seek.com/astro-chart-horoscope-online/", timeout=60000)
-        page.wait_for_selector("#nick", timeout=10000)
+        page.wait_for_selector("input[name='nick']", timeout=10000)
 
-        page.fill("#nick", "Test User")
+        page.fill("input[name='nick']", "Test User")
         page.select_option("#d", day)
         page.select_option("#m", month)
         page.select_option("#y", year)
@@ -27,7 +27,7 @@ def generate_astroseek_chart(date, time_str, lat, lon, location, output_file):
         page.keyboard.press("ArrowDown")
         page.keyboard.press("Enter")
 
-        page.click("input[type='submit']")
+        page.click("input[type='submit'][value='Continue »']")
         page.wait_for_load_state("networkidle")
         page.wait_for_selector("img.chart_img", timeout=15000)
 
